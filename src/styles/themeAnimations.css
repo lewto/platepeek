@@ -1,0 +1,63 @@
+/* Enhanced Theme Animations */
+
+/* Quantum-style animated gradient */
+.quantum-theme {
+  background: linear-gradient(
+    -45deg,
+    var(--theme-primary),
+    var(--theme-secondary),
+    var(--theme-accent),
+    var(--theme-primary)
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+/* Warp-style radial animation */
+.warp-theme {
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    var(--theme-accent)30,
+    var(--theme-primary)
+  );
+  animation: warpPulse 8s ease-in-out infinite;
+}
+
+/* Confetti-style sparkle effect */
+.confetti-theme {
+  background: linear-gradient(135deg, 
+    var(--theme-primary), 
+    var(--theme-secondary)
+  );
+  position: relative;
+}
+
+.confetti-theme::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at center,
+    var(--theme-accent) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  animation: sparkle 6s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes warpPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes sparkle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-24px); }
+}
